@@ -2,21 +2,17 @@
 
 Like [Tinkerwell](https://tinkerwell.app) :dizzy: for TypeScript. A VS Code extension.
 
-Under construction :warning:
+## Usage
+
+- Go to a TS file.
+- Press CMD+R (or manually search for typerwell commands)
+- See output in terminal. Typerwell will automatically wrap the last statement in a `console.log`
+
+## Requirements
+
+Must have `ts-node` installed
+Must have `@types/node` installed
 
 ## Dev installation
 
 `yarn`
-
-## Experiment 1
-
-Put your code in `sample.ts`.
-Run `npx ts-node tinker.ts`
-Expect result of last statement to be logged
-
-## Todo
-
-- Package in a VS Code extension
-- Bind `npx ts-node tinker.ts` to a VS Code hotkey
-- Allow to run any ts file (target the current/active file)
-- Try to use the host projects own configurations
