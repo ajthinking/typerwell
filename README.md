@@ -16,3 +16,11 @@ Must have `@types/node` installed
 ## Dev installation
 
 `yarn`
+
+## Publish
+
+```
+vsce login PUBLISHER
+# update version in package.json
+vsce publish
+```
