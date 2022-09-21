@@ -13,8 +13,9 @@ export const runFile = async () => {
   await createModifiedFile(path, wrapped);
   //   await import(wrapped);
 
-  const command = `npx ${tsNodeBin} ${wrapped}`;
+  const command = `clear && npx ${tsNodeBin} ${wrapped}`;
 
+  (vscode.window.terminals[0] || vscode.window.createTerminal()).show();
   vscode.commands.executeCommand("workbench.action.terminal.sendSequence", {
     text: command + "\r",
   });
