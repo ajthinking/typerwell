@@ -30,11 +30,9 @@ const getRunnablePath = () => {
 };
 
 const getTsNodeBin = () => {
-  if (hasLocalTsNodeBin()) {
-    return "ts-node";
-  } else {
-    return `${__dirname}/node_modules/ts-node`;
-  }
+  if (hasLocalTsNodeBin()) return "ts-node";
+
+  throw Error("Could not find ts-node, please install it!");
 };
 
 const hasLocalTsNodeBin = () => {
@@ -47,11 +45,24 @@ const getRootPath = () => {
   return vscode.workspace?.workspaceFolders?.[0]?.uri?.fsPath;
 };
 
+const getTsConfigPath = () => {
+  const rootPath = `${getRootPath()}/tsconfig.json`;
+  if (fs.existsSync(rootPath)) return rootPath;
+
+  let currentPath = getRunnablePath();
+  while (currentPath !== "/" && currentPath !== getRootPath()) {
+    const tsConfigPath = `${currentPath}/tsconfig.json`;
+    if (fs.existsSync(tsConfigPath)) return tsConfigPath;
+
+    currentPath = currentPath.substring(0, currentPath.lastIndexOf("/"));
+  }
+};
+
 const createModifiedFile = async (inputFilePath: string, outputFilePath: string) => {
   const code = await fs.promises.readFile(inputFilePath, "utf8");
 
   const project = new Project({
-    tsConfigFilePath: `${getRootPath()}/tsconfig.json`,
+    tsConfigFilePath: getTsConfigPath(),
   });
   const sourceFile = project.createSourceFile(outputFilePath, code, {
     overwrite: true,
