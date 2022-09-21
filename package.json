@@ -4,7 +4,7 @@
   "repository": "https://github.com/ajthinking/typerwell",
   "displayName": "typerwell",
   "description": "Tinker with typescript like a total boss. Like Tinkerwell for TS",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.70.0"
   },
