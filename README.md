@@ -10,8 +10,8 @@ Like [Tinkerwell](https://tinkerwell.app) :dizzy: for TypeScript. A VS Code exte
 
 ## Requirements
 
-Must have `ts-node` installed
-Must have `@types/node` installed
+Must have `ts-node` installed  
+Must have `@types/node` installed  
 
 ## Dev installation
 
